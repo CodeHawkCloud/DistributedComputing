@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Accounts";
+}
+    <center>
+        <h1>Accounts</h1>
+
+        <div clsss="container">
+            <div class="AddAccount">
+
+                <h3>Add Account</h3>
+                <!--Form for adding account-->
+                <form>
+                    <input type="text" id="idUserForAddingAccount" name="idUserForAddingAccount" placeholder="User Id" class="form-control"/>
+                </form><br>
+
+                <!--Button call-->
+                <button id="AddAccountBtn" onclick="AddAccountFunction()" class="btn-lg bg-primary">Add Account</button>
+            </div>
+
+        </div>
+
+        <div clsss="container">
+            <div class="DepositToAccount">
+
+                <h3>Deposit</h3>
+                <!--Form for depositing into account-->
+                <form>
+                    <input type="text" id="AccNoDeposit" name="AccNoDeposit" placeholder="Account number" class="form-control"/>
+                    <input type="text" id="ammountDeposit" name="ammountDeposit" placeholder="Deposit Ammount" class="form-control" />
+
+                </form><br>
+
+                <!--Button call-->
+                <button id="DepositButton" onclick="DepositFunction()" class="btn-lg bg-primary">Deposit</button>
+            </div>
+
+        </div>
+
+        <div clsss="container">
+            <div class="WithdrawFromAccount">
+
+                <h3>Withdraw</h3>
+                <!--Form for withdrawing from the account-->
+                <form>
+                    <input type="text" id="AccNoWithdraw" name="AccNoWithdraw" placeholder="Account number" class="form-control"/>
+                    <input type="text" id="ammountWithdraw" name="ammountWithdraw" placeholder="Withdraw Ammount" class="form-control" />
+                </form><br>
+
+                <!--Button call-->
+                <button id="" onclick="WithdrawFunction()" class="btn-lg bg-primary">Withdraw</button>
+            </div>
+        </div>
+
+        <div clsss="container">
+            <div class="GetAccountsById">
+
+                <h3>Get Accounts</h3>
+                <!--Form for getting accounts by user id-->
+                <form>
+                    <input type="text" id="idUserForGettingAccounts" name="idUserForGettingAccounts" placeholder="User Id" class="form-control" />
+
+                </form><br>
+
+                <!--Button call-->
+                <button id="GetAccountsBtn" onclick="GetAccountsFunction()" class="btn-lg bg-primary">Get Accounts By Id</button>
+            </div>
+        </div>
+
+    </center>
+
+<script>
+
+    //function to add accounts
+    function AddAccountFunction() {
+
+        $.ajax({
+            url: '/api/Business/AddAccount/' + $('#idUserForAddingAccount').val(),
+            type: 'GET',
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                if (data == 0) {
+
+                    alert("Account creation unsuccessful, please make sure the user Id is registered in the bank !")
+
+                } else {
+
+                    alert('New Account with account number ' + data + ' created successfully !');
+
+                }
+                
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+    }
+
+    //function to deposit into account
+    function DepositFunction() {
+
+        $.ajax({
+            url: '/api/Business/DepositToAccount',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ accountId: $("#AccNoDeposit").val(), ammount: $("#ammountDeposit").val() }),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                if (data) {
+
+                    alert("The ammount has been deposited successfully !");
+
+                } else {
+
+                    alert("The deposit to the account was unsuccesful !");
+
+                }
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+    } 
+
+
+    //function to withdraw from account
+    function WithdrawFunction() {
+
+        $.ajax({
+            url: '/api/Business/WithdrawFromAccount',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ accountId: $("#AccNoWithdraw").val(), ammount: $("#ammountWithdraw").val() }),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                if (data) {
+
+                    alert("The ammount has been withdrawn successfully !");
+
+                } else {
+
+                    alert("The withdraw was unsuccesful !");
+
+                }
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+
+    }
+
+    //function to get accounts by user id
+    function GetAccountsFunction() {
+
+        $.ajax({
+            url: '/api/Business/GetAccByUserId/' + $('#idUserForGettingAccounts').val(),
+            type: 'GET',
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+
+                alert("The accounts assciated with the user id are: " + data);
+               
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+
+    }
+
+</script>

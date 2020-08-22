@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+}
+
+    <center>
+        <h1>Users</h1>
+
+        <div clsss="container">
+            
+            <div class="CreateUser">
+                <h3>Create User</h3>
+                <!--Form for create user-->
+                <form>
+                    <input type="text" id="fnameCreate" name="fnameCreate" placeholder="First Name" class="form-control"/>
+                    <input type="text" id="lnameCreate" name="lnameCreate" placeholder="Last Name" class="form-control"/>
+                </form><br>
+
+                <!--Button call-->
+                <button id="createUserBtn" onclick="createUserFunction()" class="btn-lg bg-primary">Create User</button>
+            </div>
+
+        </div>
+
+        <div clsss="container">
+            <div class="EditUser">
+                <h3>Edit User</h3>
+                <!--Form for edit user-->
+                <form>
+                    <input type="text" id="userIdEdit" name="userIdEdit" placeholder="User Id" class="form-control"/>
+                    <input type="text" id="oldFNameEdit" name="oldFNameEdit" placeholder="Old First Name" class="form-control"/>
+                    <input type="text" id="newFNameEdit" name="newFNameEdit" placeholder="New First Name" class="form-control"/>
+                    <input type="text" id="newLNameEdit" name="newLNameEdit" placeholder="New Last Name" class="form-control"/>
+                </form><br>
+
+                <!--Button call-->
+                <button id="editUserBtn" onclick="editUserFunction()" class="btn-lg bg-primary">Edit User</button>
+            </div>
+        </div>
+
+    </center>
+
+<script>
+
+    function createUserFunction() {
+
+        $.ajax({
+            url: '/api/Business/CreateUser',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({firstName : $("#fnameCreate").val(), lastName : $("#lnameCreate").val()}),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                alert('New user with id ' + data + ' created successfully !');
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+    }
+
+    function editUserFunction() {
+
+       
+        $.ajax({
+            url: '/api/Business/EditUser',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ userId: $("#userIdEdit").val(), oldFName: $("#oldFNameEdit").val(), newFName: $("#newFNameEdit").val(), lName: $("#newLNameEdit").val()}),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+
+                if (data) {
+                    alert("The user has been updated succesfully!");
+                } else {
+
+                    alert("The update was unsucessful, please check your user Id and the Old first name before submission !");
+                }
+
+
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });  
+
+    }
+
+</script>

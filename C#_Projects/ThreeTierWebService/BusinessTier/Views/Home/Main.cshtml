@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Bank Application | Home";
+}
+
+    <center>
+        <br /><br />
+        <!--Button for users-->
+        <button id="usersBtn" onclick="UserContent()" class="btn-lg bg-primary">Users</button>
+        <!--Button for Accounts-->
+        <button id="AccountsBtn" onclick="AccountContent()" class="btn-lg bg-primary">Accounts</button>
+        <!--Button for Transactions-->
+        <button id="TransactionsBtn" onclick="TransactionContent()" class="btn-lg bg-primary">Transactions</button>
+    </center>
+
+    <div id="contentBox">
+
+    </div>
+
+<script>
+
+    //function to get the User page in a single page
+    function UserContent() {
+
+        $.ajax({
+            url: '/Home/Users/Users',
+            type: 'get',
+            processData: false,
+            success: function (data, t, j) {
+                $('#contentBox').html(data);
+            },
+            error: function (j, t, e) {
+
+                console.log(e);
+            }
+
+        });
+
+    }
+
+    //function to get the Accounts page in a single page
+    function AccountContent() {
+
+        $.ajax({
+            url: '/Home/Accounts/Accounts',
+            type: 'get',
+            processData: false,
+            success: function (data, t, j) {
+                $('#contentBox').html(data);
+            },
+            error: function (j, t, e) {
+
+                console.log(e);
+            }
+
+        });
+
+    }
+
+    //function to get the Transactions page in a single page
+    function TransactionContent() {
+
+        $.ajax({
+            url: '/Home/Transactions/Transactions',
+            type: 'get',
+            processData: false,
+            success: function (data, t, j) {
+                $('#contentBox').html(data);
+            },
+            error: function (j, t, e) {
+
+                console.log(e);
+            }
+
+        });
+
+    }
+
+    /**These were the functions used in practical 4 to call the different pages**/
+    /**For viewing purposes only**/
+    //go to users function
+    //function goToUsers() {
+    //    document.location = ''; //the location was removed since it couldn't be commented
+    //}
+
+    //go to Accounts function
+    //function goToAccounts() {
+    //    document.location = ''; //the location was removed since it couldn't be commented
+    //}
+
+    //go to transactions function
+    //function goToTransactions() {
+    //    document.location = ''; //the location was removed since it couldn't be commented
+    //}
+
+</script>

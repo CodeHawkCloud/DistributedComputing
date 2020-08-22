@@ -1,0 +1,43 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Home Page</title>
+</head>
+<body>
+    <center>
+        <h1>XSS Application</h1><br />
+        <!--buttons-->
+        <div clss="buttons" >
+
+            <button class="btn-lg bg-info" onclick="reflectiveVulnerable()">Reflective Vulnerable</button>
+            <button class="btn-lg bg-info" onclick="reflectiveNotvulnerable()">Not Vulnerable to Reflective</button>
+
+        </div>
+    </center>
+
+
+</body>
+</html>
+
+<script>
+
+    function reflectiveVulnerable() {
+
+        window.location.href = '@Url.Action("ReflectiveAttack", "Home")';
+
+    }
+
+    function reflectiveNotvulnerable() {
+
+        window.location.href = '@Url.Action("ReflectiveNot", "Home")';
+
+    }
+
+</script>
+

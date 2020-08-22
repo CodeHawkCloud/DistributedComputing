@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title>No Reflective Attacks Allowed</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <center><h1 class="h1">Welcome to the Vehicle Search Page!</h1></center>
+
+    <center>
+        <h4>Please enter the type of vehicle you want and see whether we have it at our store</h4>
+        <form>
+            <input type="text" class="form-control" id="searchId" name="searchId" />
+        </form><br />
+
+        <button class="btn-lg bg-info" onclick="searchCarByAssigningToVariaables()">Search Car With assigning to js variables</button>
+        <button class="btn-lg bg-info" onclick="searchCarAfterValidation()">Search Car after validation</button><br /><br />
+
+        <div id="containerOutput">
+            <h2 id="searchFor"></h2><br />
+            <h1 id="textOutput"></h1>
+        </div>
+    </center>
+</body>
+</html>
+
+<script>
+
+    //function that assigns the values into var and use it to output
+    function searchCarByAssigningToVariaables() {
+
+        document.getElementById("searchFor").innerHTML = "The vehicle you searched was: ";
+
+        var tempVehicleSearch = document.getElementById("searchId").value;
+
+        document.getElementById("textOutput").innerHTML = tempVehicleSearch;
+    }
+
+    //function with validation
+    function searchCarAfterValidation(){
+
+        document.getElementById("searchFor").innerHTML = "The vehicle you searched was: ";
+
+        
+        if (/^[A-Za-z]+$/.test($("#searchId").val())) {
+
+            $("#textOutput").html($("#searchId").val());
+            
+        } else {
+
+            alert('Please enter a valid vehicle name!');
+
+        }
+    }
+</script>
+

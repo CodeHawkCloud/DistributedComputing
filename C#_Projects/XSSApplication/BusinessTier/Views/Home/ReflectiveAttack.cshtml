@@ -1,0 +1,42 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reflective Attack</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <center><h1 class="h1">Welcome to the Vehicle Search Page!</h1></center>
+
+    <center>
+        <h4>Please enter the type of vehicle you want and see whether we have it at our store</h4>
+        <form>
+            <input type="text" class="form-control" id="searchCar" name="searchCar"/>
+        </form><br />
+
+        <button class="btn-lg bg-info" onclick="searchCar()">Search Car</button><br /><br />
+
+        <div id="containerOutput">
+            <h2 id="searchFor"></h2><br />
+            <h1 id="textOutput"></h1>
+        </div>
+    </center>
+</body>
+</html>
+
+<script>
+
+    function searchCar() {
+
+        
+        document.getElementById("searchFor").innerHTML = "The vehicle you searched was: ";
+
+        $("#textOutput").html($("#searchCar").val());
+    }
+
+
+</script>
+

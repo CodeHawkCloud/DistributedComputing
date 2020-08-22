@@ -1,0 +1,10 @@
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\bin\Debug\RemotingServer.exe.config
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\bin\Debug\RemotingServer.exe
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\bin\Debug\RemotingServer.pdb
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\bin\Debug\APIClasses.dll
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\bin\Debug\APIClasses.pdb
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\obj\Debug\RemotingServer.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\obj\Debug\RemotingServer.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\obj\Debug\RemotingServer.csproj.CopyComplete
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\obj\Debug\RemotingServer.exe
+C:\Users\HP\Desktop\20202857_DistributedComputing\PeerToPeer\RemotingServer\obj\Debug\RemotingServer.pdb

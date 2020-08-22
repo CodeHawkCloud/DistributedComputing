@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Transactions";
+}
+
+    <center>
+        <h1>Transactions</h1>
+
+
+        <div clsss="container">
+            <div class="Account">
+
+                <h3>Transfer</h3>
+                <!--Form for transactions-->
+                <form>
+
+                    <input type="text" id="senderAccountId" name="senderAccountId" placeholder="Sender Account Number" class="form-control" />
+                    <input type="text" id="receiverAccountId" name="receiverAccountId" placeholder="Receiver Account Number" class="form-control"/>
+                    <input type="text" id="ammount" name="ammount" placeholder="Ammount" class="form-control"/>
+                </form><br>
+
+                <!--Button call-->
+                <button id="" onclick="TransferFunction()" class="btn-lg bg-primary">Transfer</button>
+            </div>
+
+        </div>
+
+    </center>
+
+<script>
+
+    function TransferFunction() {
+
+        $.ajax({
+            url: '/api/Business/CreateTransactionAndProcess',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({senderAccId: $("#senderAccountId").val(), receiverAccId: $("#receiverAccountId").val(), ammount: $("#ammount").val()}),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                if (data) {
+
+                    alert("The transaction was created and preocessed successfully!")
+
+                } else {
+
+                    alert('The transaction preocessing failed, please check the account numbers exist and also see if the sender has enough balance !');
+
+                }
+
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+
+    }
+
+</script>
